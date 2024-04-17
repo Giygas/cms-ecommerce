@@ -15,20 +15,19 @@
 						"direction": "ltr"
 					}
 				]
+			},
+			"allproducts": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "DocumentLink",
+					"id": "mock_document_id"
+				}
 			}
 		},
 		"items": [
 			{
 				"__TYPE__": "GroupItemContent",
 				"value": [
-					[
-						"price",
-						{
-							"__TYPE__": "FieldContent",
-							"type": "Text",
-							"value": "400"
-						}
-					],
 					[
 						"description",
 						{
@@ -92,6 +91,14 @@
 							"type": "Text",
 							"value": "Electronics"
 						}
+					],
+					[
+						"price",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "7",
+							"type": "Number"
+						}
 					]
 				]
 			},
@@ -101,7 +108,6 @@
 					[
 						"image",
 						{
-							"__TYPE__": "ImageContent",
 							"url": "https://images.unsplash.com/photo-1590004828948-09db7606e5ac?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw3fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3MTMzNTAwMzJ8MA&ixlib=rb-4.0.3&q=85",
 							"alt": "sliced orange fruit on white surface",
 							"origin": {
@@ -120,6 +126,8 @@
 									"y": 0
 								}
 							},
+							"credits": null,
+							"__TYPE__": "ImageContent",
 							"thumbnails": {}
 						}
 					],
@@ -131,7 +139,7 @@
 								{
 									"type": "heading3",
 									"content": {
-										"text": "Pomme",
+										"text": "Fruits",
 										"spans": []
 									},
 									"direction": "ltr"
@@ -156,19 +164,19 @@
 						}
 					],
 					[
-						"price",
-						{
-							"__TYPE__": "FieldContent",
-							"type": "Text",
-							"value": "1"
-						}
-					],
-					[
 						"category",
 						{
 							"__TYPE__": "FieldContent",
 							"type": "Text",
 							"value": "Citrics"
+						}
+					],
+					[
+						"price",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "29",
+							"type": "Number"
 						}
 					]
 				]
@@ -179,7 +187,6 @@
 					[
 						"image",
 						{
-							"__TYPE__": "ImageContent",
 							"url": "https://images.unsplash.com/photo-1517260739337-6799d239ce83?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw2fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3MTMzNTAwMzJ8MA&ixlib=rb-4.0.3&q=85",
 							"alt": "sliced fruit on white surface",
 							"origin": {
@@ -198,6 +205,8 @@
 									"y": 0
 								}
 							},
+							"credits": null,
+							"__TYPE__": "ImageContent",
 							"thumbnails": {}
 						}
 					],
@@ -250,19 +259,127 @@
 						}
 					],
 					[
-						"price",
+						"category",
 						{
 							"__TYPE__": "FieldContent",
 							"type": "Text",
-							"value": "20"
+							"value": "Flowers"
+						}
+					],
+					[
+						"price",
+						{
+							"__TYPE__": "FieldContent",
+							"type": "Number",
+							"value": "96"
+						}
+					]
+				]
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "allProducts",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Mostly"
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"productid",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Tempor est sit sint culpa aute."
+									}
+								}
+							]
+						}
+					],
+					[
+						"title",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "heading3",
+									"content": {
+										"text": "Struck"
+									}
+								}
+							]
+						}
+					],
+					[
+						"description",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Tempor dolore ea in est Lorem exercitation exercitation sunt. Elit non consequat ipsum qui reprehenderit. Non id in et pariatur cupidatat ipsum."
+									}
+								}
+							]
+						}
+					],
+					[
+						"image",
+						{
+							"origin": {
+								"id": "main",
+								"url": "https://images.unsplash.com/photo-1547082299-de196ea013d6",
+								"width": 4272,
+								"height": 2848
+							},
+							"url": "https://images.unsplash.com/photo-1547082299-de196ea013d6",
+							"width": 4272,
+							"height": 2848,
+							"edit": {
+								"zoom": 1,
+								"crop": {
+									"x": 0,
+									"y": 0
+								},
+								"background": "transparent"
+							},
+							"credits": null,
+							"alt": null,
+							"__TYPE__": "ImageContent",
+							"thumbnails": {}
 						}
 					],
 					[
 						"category",
 						{
 							"__TYPE__": "FieldContent",
-							"type": "Text",
-							"value": "Flowers"
+							"value": "finger",
+							"type": "Text"
+						}
+					],
+					[
+						"price",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "28",
+							"type": "Number"
 						}
 					]
 				]

@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type PageDocumentDataSlicesSlice = RichTextSlice
+type PageDocumentDataSlicesSlice = ProductListSlice | HeroTaglineSlice | RichTextSlice
 
 /**
  * Content for Page documents
@@ -75,7 +75,94 @@ interface PageDocumentData {
  */
 export type PageDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-export type AllDocumentTypes = PageDocument;
+/**
+ * Content for ProductsList documents
+ */
+interface ProductslistDocumentData {
+	/**
+	 * image field in *ProductsList*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: productslist.image
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+}
+
+/**
+ * ProductsList document from Prismic
+ *
+ * - **API ID**: `productslist`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProductslistDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<ProductslistDocumentData>, "productslist", Lang>;
+
+type UnderconstructionDocumentDataSlicesSlice = UnderConstructionSlice
+
+/**
+ * Content for UnderConstruction documents
+ */
+interface UnderconstructionDocumentData {
+	/**
+	 * Slice Zone field in *UnderConstruction*
+	 *
+	 * - **Field Type**: Slice Zone
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: underconstruction.slices[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#slices
+	 */
+	slices: prismic.SliceZone<UnderconstructionDocumentDataSlicesSlice>;/**
+	 * Meta Description field in *UnderConstruction*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A brief summary of the page
+	 * - **API ID Path**: underconstruction.meta_description
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_description: prismic.KeyTextField;
+	
+	/**
+	 * Meta Image field in *UnderConstruction*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: underconstruction.meta_image
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	meta_image: prismic.ImageField<never>;
+	
+	/**
+	 * Meta Title field in *UnderConstruction*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A title of the page used for social media and search engines
+	 * - **API ID Path**: underconstruction.meta_title
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_title: prismic.KeyTextField;
+}
+
+/**
+ * UnderConstruction document from Prismic
+ *
+ * - **API ID**: `underconstruction`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type UnderconstructionDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<UnderconstructionDocumentData>, "underconstruction", Lang>;
+
+export type AllDocumentTypes = PageDocument | ProductslistDocument | UnderconstructionDocument;
 
 declare module "@prismicio/client" {
 	interface CreateClient {
@@ -87,6 +174,11 @@ declare module "@prismicio/client" {
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
+			ProductslistDocument,
+			ProductslistDocumentData,
+			UnderconstructionDocument,
+			UnderconstructionDocumentData,
+			UnderconstructionDocumentDataSlicesSlice,
 			AllDocumentTypes
 		}
 	}

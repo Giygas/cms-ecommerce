@@ -27,6 +27,12 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"product_list": {
+							"type": "SharedSlice"
+						},
+						"hero_tagline": {
+							"type": "SharedSlice"
+						},
 						"rich_text": {
 							"type": "SharedSlice"
 						}

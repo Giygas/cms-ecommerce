@@ -1,0 +1,43 @@
+{
+	"format": "custom",
+	"id": "nav",
+	"label": "Nav",
+	"repeatable": false,
+	"status": true,
+	"json": {
+		"Main": {
+			"links": {
+				"type": "Group",
+				"config": {
+					"label": "links",
+					"repeat": true,
+					"fields": {
+						"link": {
+							"type": "Link",
+							"config": {
+								"label": "link",
+								"placeholder": "",
+								"select": null
+							}
+						},
+						"label": {
+							"type": "Text",
+							"config": {
+								"label": "Label",
+								"placeholder": ""
+							}
+						},
+						"icon": {
+							"type": "Link",
+							"config": {
+								"label": "icon",
+								"placeholder": "",
+								"select": "media"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

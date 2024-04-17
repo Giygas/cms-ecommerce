@@ -6,7 +6,85 @@
   "variations": [
     {
       "id": "default",
-      "name": "Default",
+      "name": "New Products",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2"
+          }
+        },
+        "allproducts": {
+          "type": "Link",
+          "config": {
+            "label": "allProducts",
+            "select": "document",
+            "customtypes": []
+          }
+        }
+      },
+      "items": {
+        "productid": {
+          "type": "StructuredText",
+          "config": {
+            "label": "productId",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading3"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "category": {
+          "type": "Text",
+          "config": {
+            "label": "category",
+            "placeholder": ""
+          }
+        },
+        "price": {
+          "type": "Number",
+          "config": {
+            "label": "price",
+            "placeholder": ""
+          }
+        }
+      }
+    },
+    {
+      "id": "allProducts",
+      "name": "All Products",
       "docURL": "...",
       "version": "initial",
       "description": "Default",
@@ -58,17 +136,17 @@
             "thumbnails": []
           }
         },
-        "price": {
-          "type": "Text",
-          "config": {
-            "label": "price",
-            "placeholder": ""
-          }
-        },
         "category": {
           "type": "Text",
           "config": {
             "label": "category",
+            "placeholder": ""
+          }
+        },
+        "price": {
+          "type": "Number",
+          "config": {
+            "label": "price",
             "placeholder": ""
           }
         }

@@ -3,9 +3,11 @@
 import HeroTagline from './HeroTagline/index.svelte';
 import ProductList from './ProductList/index.svelte';
 import RichText from './RichText/index.svelte';
+import UnderConstruction from './UnderConstruction/index.svelte';
 
 export const components = {
 	hero_tagline: HeroTagline,
 	product_list: ProductList,
-	rich_text: RichText
+	rich_text: RichText,
+	under_construction: UnderConstruction
 };

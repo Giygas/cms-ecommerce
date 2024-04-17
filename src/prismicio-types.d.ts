@@ -4,7 +4,73 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type PageDocumentDataSlicesSlice = RichTextSlice;
+/**
+ * Item in *Nav → links*
+ */
+export interface NavDocumentDataLinksItem {
+	/**
+	 * link field in *Nav → links*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: nav.links[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
+
+	/**
+	 * Label field in *Nav → links*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: nav.links[].label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+
+	/**
+	 * icon field in *Nav → links*
+	 *
+	 * - **Field Type**: Link to Media
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: nav.links[].icon
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	icon: prismic.LinkToMediaField;
+}
+
+/**
+ * Content for Nav documents
+ */
+interface NavDocumentData {
+	/**
+	 * links field in *Nav*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: nav.links[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	links: prismic.GroupField<Simplify<NavDocumentDataLinksItem>>;
+}
+
+/**
+ * Nav document from Prismic
+ *
+ * - **API ID**: `nav`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+	Simplify<NavDocumentData>,
+	'nav',
+	Lang
+>;
+
+type PageDocumentDataSlicesSlice = ProductListSlice | HeroTaglineSlice | RichTextSlice;
 
 /**
  * Content for Page documents
@@ -79,7 +145,72 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 	Lang
 >;
 
-export type AllDocumentTypes = PageDocument;
+type UnderconstructionDocumentDataSlicesSlice = UnderConstructionSlice;
+
+/**
+ * Content for UnderConstruction documents
+ */
+interface UnderconstructionDocumentData {
+	/**
+	 * Slice Zone field in *UnderConstruction*
+	 *
+	 * - **Field Type**: Slice Zone
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: underconstruction.slices[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#slices
+	 */
+	slices: prismic.SliceZone<UnderconstructionDocumentDataSlicesSlice> /**
+	 * Meta Description field in *UnderConstruction*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A brief summary of the page
+	 * - **API ID Path**: underconstruction.meta_description
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */;
+	meta_description: prismic.KeyTextField;
+
+	/**
+	 * Meta Image field in *UnderConstruction*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: underconstruction.meta_image
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	meta_image: prismic.ImageField<never>;
+
+	/**
+	 * Meta Title field in *UnderConstruction*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A title of the page used for social media and search engines
+	 * - **API ID Path**: underconstruction.meta_title
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_title: prismic.KeyTextField;
+}
+
+/**
+ * UnderConstruction document from Prismic
+ *
+ * - **API ID**: `underconstruction`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type UnderconstructionDocument<Lang extends string = string> =
+	prismic.PrismicDocumentWithoutUID<
+		Simplify<UnderconstructionDocumentData>,
+		'underconstruction',
+		Lang
+	>;
+
+export type AllDocumentTypes = NavDocument | PageDocument | UnderconstructionDocument;
 
 /**
  * Primary content in *HeroTagline → Primary*
@@ -166,6 +297,16 @@ export interface ProductListSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	title: prismic.RichTextField;
+
+	/**
+	 * allProducts field in *ProductList → Primary*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.primary.allproducts
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	allproducts: prismic.ContentRelationshipField;
 }
 
 /**
@@ -213,16 +354,6 @@ export interface ProductListSliceDefaultItem {
 	image: prismic.ImageField<never>;
 
 	/**
-	 * price field in *ProductList → Items*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: product_list.items[].price
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	price: prismic.KeyTextField;
-
-	/**
 	 * category field in *ProductList → Items*
 	 *
 	 * - **Field Type**: Text
@@ -231,10 +362,20 @@ export interface ProductListSliceDefaultItem {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	category: prismic.KeyTextField;
+
+	/**
+	 * price field in *ProductList → Items*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.items[].price
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	price: prismic.NumberField;
 }
 
 /**
- * Default variation for ProductList Slice
+ * New Products variation for ProductList Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -247,9 +388,102 @@ export type ProductListSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *ProductList → Primary*
+ */
+export interface ProductListSliceAllProductsPrimary {
+	/**
+	 * Title field in *ProductList → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ProductList → Items*
+ */
+export interface ProductListSliceAllProductsItem {
+	/**
+	 * productId field in *ProductList → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.items[].productid
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	productid: prismic.RichTextField;
+
+	/**
+	 * title field in *ProductList → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.items[].title
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.RichTextField;
+
+	/**
+	 * description field in *ProductList → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.items[].description
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	description: prismic.RichTextField;
+
+	/**
+	 * image field in *ProductList → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.items[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * category field in *ProductList → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.items[].category
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	category: prismic.KeyTextField;
+
+	/**
+	 * price field in *ProductList → Items*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.items[].price
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	price: prismic.NumberField;
+}
+
+/**
+ * All Products variation for ProductList Slice
+ *
+ * - **API ID**: `allProducts`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductListSliceAllProducts = prismic.SharedSliceVariation<
+	'allProducts',
+	Simplify<ProductListSliceAllProductsPrimary>,
+	Simplify<ProductListSliceAllProductsItem>
+>;
+
+/**
  * Slice variation for *ProductList*
  */
-type ProductListSliceVariation = ProductListSliceDefault;
+type ProductListSliceVariation = ProductListSliceDefault | ProductListSliceAllProducts;
 
 /**
  * ProductList Shared Slice
@@ -302,6 +536,51 @@ type RichTextSliceVariation = RichTextSliceDefault;
  */
 export type RichTextSlice = prismic.SharedSlice<'rich_text', RichTextSliceVariation>;
 
+/**
+ * Primary content in *UnderConstruction → Primary*
+ */
+export interface UnderConstructionSliceDefaultPrimary {
+	/**
+	 * Message field in *UnderConstruction → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: under_construction.primary.message
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	message: prismic.RichTextField;
+}
+
+/**
+ * Default variation for UnderConstruction Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type UnderConstructionSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<UnderConstructionSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *UnderConstruction*
+ */
+type UnderConstructionSliceVariation = UnderConstructionSliceDefault;
+
+/**
+ * UnderConstruction Shared Slice
+ *
+ * - **API ID**: `under_construction`
+ * - **Description**: UnderConstruction
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type UnderConstructionSlice = prismic.SharedSlice<
+	'under_construction',
+	UnderConstructionSliceVariation
+>;
+
 declare module '@prismicio/client' {
 	interface CreateClient {
 		(
@@ -312,9 +591,15 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
+			NavDocument,
+			NavDocumentData,
+			NavDocumentDataLinksItem,
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
+			UnderconstructionDocument,
+			UnderconstructionDocumentData,
+			UnderconstructionDocumentDataSlicesSlice,
 			AllDocumentTypes,
 			HeroTaglineSlice,
 			HeroTaglineSliceDefaultPrimary,
@@ -323,12 +608,19 @@ declare module '@prismicio/client' {
 			ProductListSlice,
 			ProductListSliceDefaultPrimary,
 			ProductListSliceDefaultItem,
+			ProductListSliceAllProductsPrimary,
+			ProductListSliceAllProductsItem,
 			ProductListSliceVariation,
 			ProductListSliceDefault,
+			ProductListSliceAllProducts,
 			RichTextSlice,
 			RichTextSliceDefaultPrimary,
 			RichTextSliceVariation,
-			RichTextSliceDefault
+			RichTextSliceDefault,
+			UnderConstructionSlice,
+			UnderConstructionSliceDefaultPrimary,
+			UnderConstructionSliceVariation,
+			UnderConstructionSliceDefault
 		};
 	}
 }
