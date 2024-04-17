@@ -4,6 +4,68 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+/**
+ * Item in *Nav → links*
+ */
+export interface NavDocumentDataLinksItem {
+	/**
+	 * link field in *Nav → links*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: nav.links[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
+	
+	/**
+	 * Label field in *Nav → links*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: nav.links[].label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+	
+	/**
+	 * icon field in *Nav → links*
+	 *
+	 * - **Field Type**: Link to Media
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: nav.links[].icon
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	icon: prismic.LinkToMediaField;
+}
+
+/**
+ * Content for Nav documents
+ */
+interface NavDocumentData {
+	/**
+	 * links field in *Nav*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: nav.links[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	links: prismic.GroupField<Simplify<NavDocumentDataLinksItem>>;
+}
+
+/**
+ * Nav document from Prismic
+ *
+ * - **API ID**: `nav`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<NavDocumentData>, "nav", Lang>;
+
 type PageDocumentDataSlicesSlice = ProductListSlice | HeroTaglineSlice | RichTextSlice
 
 /**
@@ -75,33 +137,6 @@ interface PageDocumentData {
  */
 export type PageDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-/**
- * Content for ProductsList documents
- */
-interface ProductslistDocumentData {
-	/**
-	 * image field in *ProductsList*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: productslist.image
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#image
-	 */
-	image: prismic.ImageField<never>;
-}
-
-/**
- * ProductsList document from Prismic
- *
- * - **API ID**: `productslist`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type ProductslistDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<ProductslistDocumentData>, "productslist", Lang>;
-
 type UnderconstructionDocumentDataSlicesSlice = UnderConstructionSlice
 
 /**
@@ -162,7 +197,7 @@ interface UnderconstructionDocumentData {
  */
 export type UnderconstructionDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<UnderconstructionDocumentData>, "underconstruction", Lang>;
 
-export type AllDocumentTypes = PageDocument | ProductslistDocument | UnderconstructionDocument;
+export type AllDocumentTypes = NavDocument | PageDocument | UnderconstructionDocument;
 
 declare module "@prismicio/client" {
 	interface CreateClient {
@@ -171,11 +206,12 @@ declare module "@prismicio/client" {
 	
 	namespace Content {
 		export type {
+			NavDocument,
+			NavDocumentData,
+			NavDocumentDataLinksItem,
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
-			ProductslistDocument,
-			ProductslistDocumentData,
 			UnderconstructionDocument,
 			UnderconstructionDocumentData,
 			UnderconstructionDocumentDataSlicesSlice,
