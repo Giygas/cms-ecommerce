@@ -3,6 +3,12 @@
 	import { PrismicPreview } from '@prismicio/svelte/kit';
 	import { page } from '$app/stores';
 	import { repositoryName } from '$lib/prismicio';
+	import Nav from '$lib/Components/Nav.svelte';
+
+	export let data;
+
+	let { nav } = data;
+	console.log(nav);
 </script>
 
 <svelte:head>
@@ -22,5 +28,7 @@
 <main>
 	<slot />
 </main>
+
+<Nav links={nav.data.links} />
 
 <PrismicPreview {repositoryName} />

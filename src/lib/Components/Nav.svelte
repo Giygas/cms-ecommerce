@@ -1,7 +1,7 @@
 <script>
 	import { PrismicLink } from '@prismicio/svelte';
 
-	/** @type {import("@prismicio/client").Content.NavSlice} */
+	/** @type {import('../../prismicio-types').NavDocumentData['links']} */
 	export let links;
 </script>
 
