@@ -8,7 +8,6 @@
 	export let data;
 
 	let { nav } = data;
-	console.log(nav);
 </script>
 
 <svelte:head>

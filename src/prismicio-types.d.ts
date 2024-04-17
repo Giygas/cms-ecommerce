@@ -31,12 +31,12 @@ export interface NavDocumentDataLinksItem {
 	/**
 	 * icon field in *Nav → links*
 	 *
-	 * - **Field Type**: Link to Media
+	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
 	 * - **API ID Path**: nav.links[].icon
-	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
-	icon: prismic.LinkToMediaField;
+	icon: prismic.ImageField<never>;
 }
 
 /**

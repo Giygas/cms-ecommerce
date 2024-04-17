@@ -28,11 +28,11 @@
 							}
 						},
 						"icon": {
-							"type": "Link",
+							"type": "Image",
 							"config": {
 								"label": "icon",
-								"placeholder": "",
-								"select": "media"
+								"constraint": {},
+								"thumbnails": []
 							}
 						}
 					}

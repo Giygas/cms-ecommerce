@@ -20,7 +20,7 @@
 		<div class="grid auto-rows-min grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 			{#each slice.items as product}
 				<article
-					class="flex flex-col gap-4 border bg-primary-content drop-shadow-sm rounded-lg overflow-hidden w-full bg-primary/10"
+					class="flex flex-col justify-between gap-4 border bg-primary-content drop-shadow-sm rounded-lg overflow-hidden w-full bg-primary/10"
 				>
 					<PrismicImage
 						field={product.image}
