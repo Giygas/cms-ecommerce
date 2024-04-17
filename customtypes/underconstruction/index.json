@@ -9,7 +9,7 @@
 			"uid": {
 				"type": "UID",
 				"config": {
-					"label": "underconstruction",
+					"label": "uid",
 					"placeholder": ""
 				}
 			},
