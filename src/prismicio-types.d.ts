@@ -145,12 +145,23 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 	Lang
 >;
 
-type UnderconstructionDocumentDataSlicesSlice = UnderConstructionSlice;
+type UnderconstructionDocumentDataSlicesSlice = ConstructionMessageSlice;
 
 /**
  * Content for UnderConstruction documents
  */
 interface UnderconstructionDocumentData {
+	/**
+	 * Title field in *UnderConstruction*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: underconstruction.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
 	/**
 	 * Slice Zone field in *UnderConstruction*
 	 *
@@ -204,13 +215,58 @@ interface UnderconstructionDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type UnderconstructionDocument<Lang extends string = string> =
-	prismic.PrismicDocumentWithoutUID<
+	prismic.PrismicDocumentWithUID<
 		Simplify<UnderconstructionDocumentData>,
 		'underconstruction',
 		Lang
 	>;
 
 export type AllDocumentTypes = NavDocument | PageDocument | UnderconstructionDocument;
+
+/**
+ * Primary content in *ConstructionMessage → Primary*
+ */
+export interface ConstructionMessageSliceDefaultPrimary {
+	/**
+	 * Message field in *ConstructionMessage → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: construction_message.primary.message
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	message: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ConstructionMessage Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ConstructionMessageSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<ConstructionMessageSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *ConstructionMessage*
+ */
+type ConstructionMessageSliceVariation = ConstructionMessageSliceDefault;
+
+/**
+ * ConstructionMessage Shared Slice
+ *
+ * - **API ID**: `construction_message`
+ * - **Description**: ConstructionMessage
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ConstructionMessageSlice = prismic.SharedSlice<
+	'construction_message',
+	ConstructionMessageSliceVariation
+>;
 
 /**
  * Primary content in *HeroTagline → Primary*
@@ -536,51 +592,6 @@ type RichTextSliceVariation = RichTextSliceDefault;
  */
 export type RichTextSlice = prismic.SharedSlice<'rich_text', RichTextSliceVariation>;
 
-/**
- * Primary content in *UnderConstruction → Primary*
- */
-export interface UnderConstructionSliceDefaultPrimary {
-	/**
-	 * Message field in *UnderConstruction → Primary*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: under_construction.primary.message
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-	 */
-	message: prismic.RichTextField;
-}
-
-/**
- * Default variation for UnderConstruction Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type UnderConstructionSliceDefault = prismic.SharedSliceVariation<
-	'default',
-	Simplify<UnderConstructionSliceDefaultPrimary>,
-	never
->;
-
-/**
- * Slice variation for *UnderConstruction*
- */
-type UnderConstructionSliceVariation = UnderConstructionSliceDefault;
-
-/**
- * UnderConstruction Shared Slice
- *
- * - **API ID**: `under_construction`
- * - **Description**: UnderConstruction
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type UnderConstructionSlice = prismic.SharedSlice<
-	'under_construction',
-	UnderConstructionSliceVariation
->;
-
 declare module '@prismicio/client' {
 	interface CreateClient {
 		(
@@ -601,6 +612,10 @@ declare module '@prismicio/client' {
 			UnderconstructionDocumentData,
 			UnderconstructionDocumentDataSlicesSlice,
 			AllDocumentTypes,
+			ConstructionMessageSlice,
+			ConstructionMessageSliceDefaultPrimary,
+			ConstructionMessageSliceVariation,
+			ConstructionMessageSliceDefault,
 			HeroTaglineSlice,
 			HeroTaglineSliceDefaultPrimary,
 			HeroTaglineSliceVariation,
@@ -616,11 +631,7 @@ declare module '@prismicio/client' {
 			RichTextSlice,
 			RichTextSliceDefaultPrimary,
 			RichTextSliceVariation,
-			RichTextSliceDefault,
-			UnderConstructionSlice,
-			UnderConstructionSliceDefaultPrimary,
-			UnderConstructionSliceVariation,
-			UnderConstructionSliceDefault
+			RichTextSliceDefault
 		};
 	}
 }

@@ -1,0 +1,26 @@
+{
+  "id": "construction_message",
+  "type": "SharedSlice",
+  "name": "ConstructionMessage",
+  "description": "ConstructionMessage",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "message": {
+          "type": "Text",
+          "config": {
+            "label": "Message",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

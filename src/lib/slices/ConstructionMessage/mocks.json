@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"message": {
+				"__TYPE__": "FieldContent",
+				"value": "tower",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

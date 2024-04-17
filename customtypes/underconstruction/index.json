@@ -6,12 +6,26 @@
 	"status": true,
 	"json": {
 		"Main": {
+			"uid": {
+				"type": "UID",
+				"config": {
+					"label": "underconstruction",
+					"placeholder": ""
+				}
+			},
+			"title": {
+				"type": "Text",
+				"config": {
+					"label": "Title",
+					"placeholder": ""
+				}
+			},
 			"slices": {
 				"type": "Slices",
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
-						"under_construction": {
+						"construction_message": {
 							"type": "SharedSlice"
 						}
 					}
