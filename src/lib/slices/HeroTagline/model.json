@@ -1,0 +1,53 @@
+{
+  "id": "hero_tagline",
+  "type": "SharedSlice",
+  "name": "HeroTagline",
+  "description": "HeroTagline",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "Tagline",
+            "allowTargetBlank": true,
+            "multi": "heading1"
+          }
+        },
+        "subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "shop_sales": {
+          "type": "Link",
+          "config": {
+            "label": "Shop Sales",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "all_products": {
+          "type": "Link",
+          "config": {
+            "label": "All Products",
+            "placeholder": "",
+            "select": null
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

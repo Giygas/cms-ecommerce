@@ -30,8 +30,7 @@ interface PageDocumentData {
 	 * - **Tab**: Main
 	 * - **Documentation**: https://prismic.io/docs/field#slices
 	 */
-	slices: prismic.SliceZone<PageDocumentDataSlicesSlice>;
-	/**
+	slices: prismic.SliceZone<PageDocumentDataSlicesSlice> /**
 	 * Meta Title field in *Page*
 	 *
 	 * - **Field Type**: Text
@@ -39,7 +38,7 @@ interface PageDocumentData {
 	 * - **API ID Path**: page.meta_title
 	 * - **Tab**: SEO & Metadata
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
+	 */;
 	meta_title: prismic.KeyTextField;
 
 	/**
@@ -81,6 +80,185 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 >;
 
 export type AllDocumentTypes = PageDocument;
+
+/**
+ * Primary content in *HeroTagline → Primary*
+ */
+export interface HeroTaglineSliceDefaultPrimary {
+	/**
+	 * Title field in *HeroTagline → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Tagline
+	 * - **API ID Path**: hero_tagline.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.RichTextField;
+
+	/**
+	 * Subtitle field in *HeroTagline → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero_tagline.primary.subtitle
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	subtitle: prismic.RichTextField;
+
+	/**
+	 * Shop Sales field in *HeroTagline → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero_tagline.primary.shop_sales
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	shop_sales: prismic.LinkField;
+
+	/**
+	 * All Products field in *HeroTagline → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero_tagline.primary.all_products
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	all_products: prismic.LinkField;
+}
+
+/**
+ * Default variation for HeroTagline Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroTaglineSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<HeroTaglineSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *HeroTagline*
+ */
+type HeroTaglineSliceVariation = HeroTaglineSliceDefault;
+
+/**
+ * HeroTagline Shared Slice
+ *
+ * - **API ID**: `hero_tagline`
+ * - **Description**: HeroTagline
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroTaglineSlice = prismic.SharedSlice<'hero_tagline', HeroTaglineSliceVariation>;
+
+/**
+ * Primary content in *ProductList → Primary*
+ */
+export interface ProductListSliceDefaultPrimary {
+	/**
+	 * Title field in *ProductList → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ProductList → Items*
+ */
+export interface ProductListSliceDefaultItem {
+	/**
+	 * productId field in *ProductList → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.items[].productid
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	productid: prismic.RichTextField;
+
+	/**
+	 * title field in *ProductList → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.items[].title
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.RichTextField;
+
+	/**
+	 * description field in *ProductList → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.items[].description
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	description: prismic.RichTextField;
+
+	/**
+	 * image field in *ProductList → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.items[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * price field in *ProductList → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.items[].price
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	price: prismic.KeyTextField;
+
+	/**
+	 * category field in *ProductList → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.items[].category
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	category: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ProductList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductListSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<ProductListSliceDefaultPrimary>,
+	Simplify<ProductListSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *ProductList*
+ */
+type ProductListSliceVariation = ProductListSliceDefault;
+
+/**
+ * ProductList Shared Slice
+ *
+ * - **API ID**: `product_list`
+ * - **Description**: ProductList
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductListSlice = prismic.SharedSlice<'product_list', ProductListSliceVariation>;
 
 /**
  * Primary content in *RichText → Primary*
@@ -138,6 +316,15 @@ declare module '@prismicio/client' {
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
 			AllDocumentTypes,
+			HeroTaglineSlice,
+			HeroTaglineSliceDefaultPrimary,
+			HeroTaglineSliceVariation,
+			HeroTaglineSliceDefault,
+			ProductListSlice,
+			ProductListSliceDefaultPrimary,
+			ProductListSliceDefaultItem,
+			ProductListSliceVariation,
+			ProductListSliceDefault,
 			RichTextSlice,
 			RichTextSliceDefaultPrimary,
 			RichTextSliceVariation,
