@@ -27,6 +27,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"construction_message": {
+							"type": "SharedSlice"
+						},
 						"product_list": {
 							"type": "SharedSlice"
 						},
