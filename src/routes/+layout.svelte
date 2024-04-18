@@ -8,6 +8,7 @@
 	export let data;
 
 	let { nav } = data;
+	$: data;
 </script>
 
 <svelte:head>
