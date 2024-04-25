@@ -37,6 +37,13 @@
 								},
 								"thumbnails": []
 							}
+						},
+						"uid": {
+							"type": "Text",
+							"config": {
+								"label": "uid",
+								"placeholder": ""
+							}
 						}
 					}
 				}

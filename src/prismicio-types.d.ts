@@ -37,6 +37,16 @@ export interface NavDocumentDataLinksItem {
 	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
 	icon: prismic.ImageField<never>;
+
+	/**
+	 * uid field in *Nav → links*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: nav.links[].uid
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	uid: prismic.KeyTextField;
 }
 
 /**

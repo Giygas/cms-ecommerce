@@ -6,7 +6,7 @@
 </script>
 
 <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-	<div class="container mx-auto flex flex-col gap-5 p-5 lg:gap-10 lg:p-16">
+	<div class="container mx-auto flex flex-col gap-5 p-5 lg:gap-10 lg:p-16 mb-20">
 		<div class="flex flex-row justify-between items-center my-2 lg:my-0">
 			<h2 class="text-3xl font-bold">
 				<PrismicRichText field={slice.primary.title} />

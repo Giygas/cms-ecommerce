@@ -40,6 +40,7 @@
 	"type": "module",
 	"dependencies": {
 		"@prismicio/client": "^7.4.1",
-		"@prismicio/svelte": "^1.1.1"
+		"@prismicio/svelte": "^1.1.1",
+		"@sveltejs/adapter-vercel": "^5.3.0"
 	}
 }

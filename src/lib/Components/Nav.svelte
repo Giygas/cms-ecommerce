@@ -2,14 +2,14 @@
 	import { PrismicImage, PrismicLink } from '@prismicio/svelte';
 	import { page } from '$app/stores';
 
-	/** @type {import('../../prismicio-types').NavDocumentData['links']} */
+	/** @type {import('../../../types.generated').NavDocumentDataLinksItem[]} */
 	export let links;
 </script>
 
 <div class="btm-nav">
 	{#each links as link}
-		{@const active = $page.data.page.uid == link.link.uid}
-		{#if link.link.uid != 'cart'}
+		{@const active = $page.data.page?.uid == link?.uid}
+		{#if link?.uid != 'cart'}
 			<button
 				class="text-primary flex flex-col justify-center align-middle items-center self-center"
 				class:active
@@ -24,7 +24,7 @@
 				class="snipcart-checkout text-primary flex flex-col justify-center align-middle items-center self-center"
 				class:active
 			>
-				<PrismicLink class="w-full flex flex-col  items-center ">
+				<PrismicLink class="w-full flex flex-col items-center ">
 					<PrismicImage field={link.icon} class="w-6 h-6 relative"></PrismicImage>
 					<span id="cart-count" class="snipcart-items-count absolute z-20 font-bold"></span>
 					{link.label}

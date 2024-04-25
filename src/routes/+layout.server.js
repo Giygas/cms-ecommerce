@@ -3,8 +3,8 @@ import { createClient } from '$lib/prismicio';
 
 export const prerender = 'auto';
 
-export async function load({ fetch, request }) {
-	const client = createClient({ fetch, request });
+export async function load({ fetch }) {
+	const client = createClient({ fetch });
 
 	const nav = await client.getSingle('nav');
 
