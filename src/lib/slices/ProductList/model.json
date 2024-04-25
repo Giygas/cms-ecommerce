@@ -31,33 +31,6 @@
         }
       },
       "items": {
-        "productid": {
-          "type": "StructuredText",
-          "config": {
-            "label": "productId",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-          }
-        },
-        "title": {
-          "type": "StructuredText",
-          "config": {
-            "label": "title",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "heading3"
-          }
-        },
-        "description": {
-          "type": "StructuredText",
-          "config": {
-            "label": "description",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "paragraph"
-          }
-        },
         "image": {
           "type": "Image",
           "config": {
@@ -77,6 +50,27 @@
           "type": "Number",
           "config": {
             "label": "price",
+            "placeholder": ""
+          }
+        },
+        "productid": {
+          "type": "Text",
+          "config": {
+            "label": "productId",
+            "placeholder": ""
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "description",
             "placeholder": ""
           }
         }

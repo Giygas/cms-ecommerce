@@ -28,7 +28,7 @@
 					/>
 					<div class="px-4">
 						<h3 class="text-2xl font-bold min-h-16">
-							<PrismicRichText field={product.title} />
+							{product.title}
 						</h3>
 
 						<p class="text-right p-0 mb-4">
@@ -37,13 +37,21 @@
 							</span>
 						</p>
 						<p class="max-h-20 overflow-y-scroll min-h-20 lg:min-h-28">
-							<PrismicRichText field={product.description} />
+							{product.description}
 						</p>
 						<p class="my-2 text-right">
 							<span class="font-bold">Price: </span> ${product.price}
 						</p>
 					</div>
-					<button class="btn btn-primary">Add to Cart</button>
+					<button
+						class="snipcart-add-item btn btn-primary"
+						data-item-id={product.productid}
+						data-item-name={product.title}
+						data-item-category={product.category}
+						data-item-price={product.price}
+						data-item-image={product.image.url}
+						data-item-description={product.description}>Add to Cart</button
+					>
 				</article>
 			{/each}
 		</div>

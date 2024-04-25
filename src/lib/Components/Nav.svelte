@@ -16,7 +16,6 @@
 			>
 				<PrismicLink field={link.link} class="w-full flex flex-col  items-center">
 					<PrismicImage field={link.icon} class="w-6 h-6 "></PrismicImage>
-					<!-- <img src={link.icon.url} class="w-6 h-6 items-center self-center" alt={link.icon.alt} /> -->
 					{link.label}
 				</PrismicLink>
 			</button>
@@ -25,12 +24,25 @@
 				class="snipcart-checkout text-primary flex flex-col justify-center align-middle items-center self-center"
 				class:active
 			>
-				<PrismicLink class="w-full flex flex-col  items-center">
-					<PrismicImage field={link.icon} class="w-6 h-6 "></PrismicImage>
-					<!-- <img src={link.icon.url} class="w-6 h-6 items-center self-center" alt={link.icon.alt} /> -->
+				<PrismicLink class="w-full flex flex-col  items-center ">
+					<PrismicImage field={link.icon} class="w-6 h-6 relative"></PrismicImage>
+					<span id="cart-count" class="snipcart-items-count absolute z-20 font-bold"></span>
 					{link.label}
 				</PrismicLink>
 			</button>
 		{/if}
 	{/each}
 </div>
+
+<style>
+	.snipcart-items-count {
+		min-width: 1.5rem;
+		color: white;
+		font-size: 12px;
+		background-color: red;
+		padding: 0.1rem 0.3rem;
+		border-radius: 0.5rem;
+		top: 10%;
+		left: 51%;
+	}
+</style>

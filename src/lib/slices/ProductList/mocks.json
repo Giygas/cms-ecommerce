@@ -29,20 +29,6 @@
 				"__TYPE__": "GroupItemContent",
 				"value": [
 					[
-						"description",
-						{
-							"__TYPE__": "StructuredTextContent",
-							"value": [
-								{
-									"type": "paragraph",
-									"content": {
-										"text": "Proident pariatur veniam minim ut ullamco aute est duis quis. Ipsum dolor et ex ullamco enim duis reprehenderit esse cillum amet nulla."
-									}
-								}
-							]
-						}
-					],
-					[
 						"image",
 						{
 							"origin": {
@@ -69,22 +55,6 @@
 						}
 					],
 					[
-						"title",
-						{
-							"__TYPE__": "StructuredTextContent",
-							"value": [
-								{
-									"type": "heading3",
-									"content": {
-										"text": "Notebook",
-										"spans": []
-									},
-									"direction": "ltr"
-								}
-							]
-						}
-					],
-					[
 						"category",
 						{
 							"__TYPE__": "FieldContent",
@@ -98,6 +68,30 @@
 							"__TYPE__": "FieldContent",
 							"value": "7",
 							"type": "Number"
+						}
+					],
+					[
+						"productid",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "room",
+							"type": "Text"
+						}
+					],
+					[
+						"title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "watch",
+							"type": "Text"
+						}
+					],
+					[
+						"description",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "appropriate",
+							"type": "Text"
 						}
 					]
 				]
@@ -132,38 +126,6 @@
 						}
 					],
 					[
-						"title",
-						{
-							"__TYPE__": "StructuredTextContent",
-							"value": [
-								{
-									"type": "heading3",
-									"content": {
-										"text": "Fruits",
-										"spans": []
-									},
-									"direction": "ltr"
-								}
-							]
-						}
-					],
-					[
-						"description",
-						{
-							"__TYPE__": "StructuredTextContent",
-							"value": [
-								{
-									"type": "paragraph",
-									"content": {
-										"text": "Proident pariatur veniam minim ut ullamco aute est duis quis. Ipsum dolor et ex ullamco enim duis reprehenderit esse cillum amet nulla.Proident pariatur veniam minim ut ullamco aute est duis quis. Ipsum dolor et ex ullamco enim duis reprehenderit esse cillum amet nulla.Proident pariatur veniam minim ut ullamco aute est duis quis. Ipsum dolor et ex ullamco enim duis reprehenderit esse cillum amet nulla.Proident pariatur veniam minim ut ullamco aute est duis quis. Ipsum dolor et ex ullamco enim duis reprehenderit esse cillum amet nulla.",
-										"spans": []
-									},
-									"direction": "ltr"
-								}
-							]
-						}
-					],
-					[
 						"category",
 						{
 							"__TYPE__": "FieldContent",
@@ -177,6 +139,30 @@
 							"__TYPE__": "FieldContent",
 							"value": "29",
 							"type": "Number"
+						}
+					],
+					[
+						"productid",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "work",
+							"type": "Text"
+						}
+					],
+					[
+						"title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "trace",
+							"type": "Text"
+						}
+					],
+					[
+						"description",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "remove",
+							"type": "Text"
 						}
 					]
 				]
@@ -211,54 +197,6 @@
 						}
 					],
 					[
-						"productid",
-						{
-							"__TYPE__": "StructuredTextContent",
-							"value": [
-								{
-									"type": "paragraph",
-									"content": {
-										"text": "Flowers",
-										"spans": []
-									},
-									"direction": "ltr"
-								}
-							]
-						}
-					],
-					[
-						"title",
-						{
-							"__TYPE__": "StructuredTextContent",
-							"value": [
-								{
-									"type": "heading3",
-									"content": {
-										"text": "Flowers",
-										"spans": []
-									},
-									"direction": "ltr"
-								}
-							]
-						}
-					],
-					[
-						"description",
-						{
-							"__TYPE__": "StructuredTextContent",
-							"value": [
-								{
-									"type": "paragraph",
-									"content": {
-										"text": "A bouquet of flowers",
-										"spans": []
-									},
-									"direction": "ltr"
-								}
-							]
-						}
-					],
-					[
 						"category",
 						{
 							"__TYPE__": "FieldContent",
@@ -272,6 +210,30 @@
 							"__TYPE__": "FieldContent",
 							"type": "Number",
 							"value": "96"
+						}
+					],
+					[
+						"productid",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "bring",
+							"type": "Text"
+						}
+					],
+					[
+						"title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "entire",
+							"type": "Text"
+						}
+					],
+					[
+						"description",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "unhappy",
+							"type": "Text"
 						}
 					]
 				]

@@ -298,36 +298,6 @@ export interface ProductListSliceDefaultPrimary {
  */
 export interface ProductListSliceDefaultItem {
 	/**
-	 * productId field in *ProductList → Items*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: product_list.items[].productid
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-	 */
-	productid: prismic.RichTextField;
-
-	/**
-	 * title field in *ProductList → Items*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: product_list.items[].title
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-	 */
-	title: prismic.RichTextField;
-
-	/**
-	 * description field in *ProductList → Items*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: product_list.items[].description
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-	 */
-	description: prismic.RichTextField;
-
-	/**
 	 * image field in *ProductList → Items*
 	 *
 	 * - **Field Type**: Image
@@ -356,6 +326,36 @@ export interface ProductListSliceDefaultItem {
 	 * - **Documentation**: https://prismic.io/docs/field#number
 	 */
 	price: prismic.NumberField;
+
+	/**
+	 * productId field in *ProductList → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.items[].productid
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	productid: prismic.KeyTextField;
+
+	/**
+	 * title field in *ProductList → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.items[].title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * description field in *ProductList → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: product_list.items[].description
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	description: prismic.KeyTextField;
 }
 
 /**
